@@ -9,7 +9,7 @@ export default {
                 accent: "#D97B45",
                 background: "#FEFEFE",
                 text: "#000000",
-                offtext: "#6E6E6E",
+                dark: "#A74006",
             },
         },
     },
