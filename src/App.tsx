@@ -2,7 +2,7 @@ import { Input } from "./components";
 
 function App() {
     return (
-        <div className="bg-background min-h-screen">
+        <div className="bg-background text-text min-h-screen">
             <Input />
         </div>
     );
