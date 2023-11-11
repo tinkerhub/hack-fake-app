@@ -13,8 +13,3 @@ html {
 .action-button {
     box-shadow: 0 6px #a74006;
 }
-
-.two-tone-circle {
-    background: radial-gradient(circle at center, #d36c31, #fefefe 70%);
-    box-shadow: 0 0 80px rgba(211, 108, 49, 0.7);
-}
