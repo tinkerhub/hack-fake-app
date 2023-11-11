@@ -1,4 +1,4 @@
-import { ActionButton } from "..";
+import { ActionButton, Navbar } from "..";
 import Circle from "../../assets/svgs/circle.svg";
 
 function Home() {
