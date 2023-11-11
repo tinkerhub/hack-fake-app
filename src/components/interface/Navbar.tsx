@@ -6,6 +6,10 @@ function Navbar() {
                 value={30}
                 max={100}
             ></progress>
+
+            <h1 className="text-3xl font-bold text-primary pl-4 pt-4 lg:pl-8 lg:pt-8 lg:text-4xl">
+                hack <br /> fake
+            </h1>
         </>
     );
 }
