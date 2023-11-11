@@ -1,9 +1,9 @@
-import { Input } from "./components";
+import { Login } from "./components";
 
 function App() {
     return (
         <div className="bg-background text-text min-h-screen">
-            <Input />
+            <Login />
         </div>
     );
 }

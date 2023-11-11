@@ -14,7 +14,7 @@ function Input({ label, placeholder }: Props) {
             <input
                 type="text"
                 placeholder={placeholder || ""}
-                className="input input-bordered focus:outline-none w-full bg-transparent border-dark"
+                className="input placeholder:text-sm placeholder:text-offtext input-bordered focus:outline-none w-full bg-transparent border-dark"
             />
         </div>
     );

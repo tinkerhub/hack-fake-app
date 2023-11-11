@@ -2,4 +2,7 @@
 import Input from "./interface/Input";
 import ActionButton from "./interface/ActionButton";
 
-export { Input, ActionButton };
+// Pages components
+import Login from "./pages/Login";
+
+export { Input, ActionButton, Login };

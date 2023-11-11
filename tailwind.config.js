@@ -10,6 +10,7 @@ export default {
                 background: "#FEFEFE",
                 text: "#000000",
                 dark: "#A74006",
+                offtext: "#6E6E6E",
             },
         },
     },
