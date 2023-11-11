@@ -5,8 +5,8 @@ function Home() {
     return (
         <>
             <div className="h-screen flex flex-col">
-                <div className="w-11/12 mx-auto py-8  md:pt-16 md:pb-0">
-                    <h1 className=" md:text-center text-5xl font-semibold text-primary">
+                <div className="w-11/12 mx-auto py-8  md:pt-16 md:pb-0 md:flex md:justify-center">
+                    <h1 className="text-5xl font-semibold text-primary">
                         hack <br /> fake
                     </h1>
                 </div>
