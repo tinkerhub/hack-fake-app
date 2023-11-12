@@ -1,1 +1,1 @@
-# hack-fake-app
+# HackFake Frontend Application
