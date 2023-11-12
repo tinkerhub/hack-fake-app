@@ -56,4 +56,12 @@ export const apiEndpoints = Object.freeze({
 	verification: {
 		requestEmailVerification: "/verification/request-email-verification",
 	},
+	news: {
+		requestNewsCreation: "/api/news",
+		annotate: "/api/news/annotate",
+		predict: "/api/news/:news_id/predict",
+	},
+	annotations:{
+		getAnnotations:"api/annotations"
+	}
 });
