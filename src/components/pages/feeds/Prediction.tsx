@@ -38,9 +38,9 @@ function Prediction() {
 
   return (
     <div className="flex-1 justify-center items-center w-11/12 md:w-3/5 lg:w-2/3 mx-auto gap-8 flex flex-col">
-      <FeedTitle content="This is what i think about the news" />
+      <FeedTitle content="This is what AI think about the news" />
       <div className="text-sm -mt-5">
-        This might be wrong, but this is what I think about the news
+        This might be wrong, but this is what AI think about the news
       </div>
       <div className="flex flex-col items-center">
         {/* <div className="w-96 scale-110 h-10 bg-red-600 flex justify-center items-center text-white rounded-md">
