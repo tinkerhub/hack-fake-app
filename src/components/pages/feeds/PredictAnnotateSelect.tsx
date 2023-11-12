@@ -1,12 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { FormEvent } from "react";
-
-import { ActionButton, FeedTitle } from "../..";
+import {useNavigate} from "react-router-dom";
+import {FormEvent, useContext} from "react";
+import {ActionButton, FeedTitle} from "../..";
+import {GlobalStateContext} from "@/app-context/global-state.tsx";
 
 function PredictAnnotateSelect() {
     const navigate = useNavigate();
 
     const handlePredictClick = (e: FormEvent<HTMLFormElement>) => {
+
         e.preventDefault();
         navigate("/predict");
     };

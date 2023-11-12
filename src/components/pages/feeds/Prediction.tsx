@@ -1,15 +1,35 @@
-import { FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import {FormEvent, useContext, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
-import { ActionButton, FeedTitle } from "../..";
+import {ActionButton, FeedTitle} from "../..";
 import Chips from "../../interface/Chips";
-import { useContext } from "react";
-import { GlobalStateContext } from "../../../app-context/global-state";
+import {GlobalStateContext} from "../../../app-context/global-state";
+import NewsService from "../../../services/api/hfAppServer/NewsPredictService.ts";
+import axios from "axios";
+
+
+const apiServer = axios.create({
+  baseURL: "http://localhost:3086",
+  // Add any other configurations you need
+});
+
 function Prediction() {
-  const { globalState } = useContext(GlobalStateContext);
+    const {globalState, updateState} = useContext(GlobalStateContext);
   const annotations = globalState.annotations;
 
+    const [ann, setAnn] = useState([])
   const navigate = useNavigate();
+
+    NewsService(apiServer).predictNews(globalState.newsId).then((res) => {
+        console.log("res", res);
+        const annots = [];
+        res?.data.annotationIds.forEach((id: string) => {
+            const annotation = globalState.annontaionsMAp[id].name;
+            annots.push(annotation);
+        });
+        setAnn(annots);
+
+    });
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +47,7 @@ function Prediction() {
           Fake
         </div> */}
         <div className="mt-5 flex flex-wrap justify-center  gap-2">
-          {annotations.map((annotation) => (
+          {ann.map((annotation) => (
             <Chips text={annotation} />
           ))}
         </div>

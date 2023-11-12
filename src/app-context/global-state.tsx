@@ -1,5 +1,15 @@
-import React, { createContext, useState } from "react";
+import React, {createContext, useState} from "react";
+import AnnotationService from "../services/api/hfAppServer/AnnotationService.ts";
+import axios from "axios";
 
+const apiServer = axios.create({
+  baseURL: "http://localhost:3086",
+  // Add any other configurations you need
+});
+const annotationService = AnnotationService(apiServer);
+
+const result = await annotationService.getAnnotations();
+console.log("res", result);
 interface GlobalState {
   news: {
     id: string;
@@ -9,9 +19,18 @@ interface GlobalState {
     date: string;
   };
   annotations: string[];
+  newsId: string;
+  annontaionsMAp: Array<any>;
   // Define your global state interface here
 }
+const annots =[];
 
+
+
+result?.data.ids.forEach((id: string) => {
+    const annotation = result?.data.items[id].name;
+    annots.push(annotation);
+});
 const initialGlobalState: GlobalState = {
   news: {
     id: "",
@@ -20,13 +39,9 @@ const initialGlobalState: GlobalState = {
     url: "",
     date: "",
   },
-  annotations: [
-    "Hate",
-    "Misleading",
-    "Disinformation",
-    "Rumour",
-    "Sensationalism",
-  ],
+  annotations: annots,
+  newsId: "",
+  annontaionsMAp:result?.data.items,
 };
 
 export const GlobalStateContext = createContext<{
