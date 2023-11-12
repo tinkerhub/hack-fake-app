@@ -1,15 +1,13 @@
-import FeedTitle from "../interface/FeedTitle";
-import FeedLayout from "../layouts/FeedLayout";
-import Annotate from "./feeds/Annotate";
-import ContentForm from "./feeds/ContentForm";
-import TitleForm from "./feeds/PredictAnnotateSelect";
-import Prediction from "./feeds/Prediction";
-import TitleFrom from "./feeds/TitleFrom";
+import { FeedLayout } from "..";
 
-function Feed() {
+interface FeedProps {
+  children: React.ReactNode;
+}
+
+function Feed({ children }: FeedProps) {
   return (
     <FeedLayout>
-      <Annotate />
+      {children}
       {/* <ContentForm /> */}
     </FeedLayout>
   );

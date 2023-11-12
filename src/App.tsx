@@ -1,14 +1,8 @@
-import { Feed, Home, Login, Navbar } from "./components";
-
-function App() {
-  
-  return (
-    <div className="bg-background text-text min-h-screen">
-      <Login />
-      <Home />
-      <Feed />
-    </div>
-  );
+interface AppProps {
+  children: React.ReactNode;
+}
+function App({ children }: AppProps) {
+  return <div className="bg-background text-text min-h-screen">{children}</div>;
 }
 
 export default App;

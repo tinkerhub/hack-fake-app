@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ActionButton, FeedTitle } from "../..";
 import Chips from "../../interface/Chips";
 
-function Prediction() {
+function Annotate() {
   const [chips, setChips] = useState([
     {
       text: "Hate",
@@ -63,4 +63,4 @@ function Prediction() {
   );
 }
 
-export default Prediction;
+export default Annotate;
