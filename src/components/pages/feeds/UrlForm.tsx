@@ -33,6 +33,8 @@ function UrlForm() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate("/submit-news");
+    
+    console.log(globalState.news);
   };
 
   return (

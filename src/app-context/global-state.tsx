@@ -8,6 +8,7 @@ interface GlobalState {
     url: string;
     date: string;
   };
+  annotations: string[];
   // Define your global state interface here
 }
 
@@ -19,7 +20,13 @@ const initialGlobalState: GlobalState = {
     url: "",
     date: "",
   },
-  // Define your initial global state here
+  annotations: [
+    "Hate",
+    "Misleading",
+    "Disinformation",
+    "Rumour",
+    "Sensationalism",
+  ],
 };
 
 export const GlobalStateContext = createContext<{
