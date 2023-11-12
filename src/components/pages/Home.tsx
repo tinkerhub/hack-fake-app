@@ -1,7 +1,17 @@
+import { useNavigate } from "react-router-dom";
+import { FormEvent } from "react";
+
 import { ActionButton } from "..";
 import Circle from "../../assets/svgs/circle.svg";
 
 function Home() {
+    const navigate = useNavigate();
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        navigate("/add-news-title");
+    };
+
     return (
         <div className="h-screen flex flex-col">
             <div className="w-11/12 mx-auto py-8  md:pt-16 md:pb-0 md:flex md:justify-center">
@@ -23,7 +33,7 @@ function Home() {
                             detect and prevent the spread of digital falsehoods.
                         </p>
                     </div>
-                    <ActionButton text={"start"} />
+                    <ActionButton text={"start"} onClick={handleSubmit} />
                 </div>
             </div>
         </div>
