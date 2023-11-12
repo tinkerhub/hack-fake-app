@@ -3,13 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { Feed, Home, Login } from "./components/index.ts";
-import TitleForm from "./components/pages/feeds/TitleFrom.tsx";
+import TitleForm from "./components/pages/feeds/TitleForm.tsx";
 import ContentForm from "./components/pages/feeds/ContentForm.tsx";
 import UrlForm from "./components/pages/feeds/UrlForm.tsx";
 import PredictAnnotateSelect from "./components/pages/feeds/PredictAnnotateSelect.tsx";
 import Prediction from "./components/pages/feeds/Prediction.tsx";
 import Annotate from "./components/pages/feeds/Annotate.tsx";
 import Feedback from "./components/pages/feeds/Feedback.tsx";
+import { GlobalStateProvider } from "./app-context/global-state.tsx";
 
 const router = createBrowserRouter([
   {
@@ -51,5 +52,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />
+  <GlobalStateProvider>
+    <RouterProvider router={router} />
+  </GlobalStateProvider>
 );
