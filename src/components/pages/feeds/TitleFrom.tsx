@@ -1,4 +1,9 @@
 import { ActionButton, FeedTitle } from "../..";
+// interface Props {
+//   text: string;
+//   selected?: boolean;
+//   onClick?: () => void;
+// }
 
 function TitleForm() {
     return (
