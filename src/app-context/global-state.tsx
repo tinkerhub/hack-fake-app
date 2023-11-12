@@ -3,7 +3,7 @@ import AnnotationService from "../services/api/hfAppServer/AnnotationService.ts"
 import axios from "axios";
 
 const apiServer = axios.create({
-  baseURL: "http://localhost:3086",
+  baseURL: "https://api.hackfake.swalah.co",
   // Add any other configurations you need
 });
 const annotationService = AnnotationService(apiServer);

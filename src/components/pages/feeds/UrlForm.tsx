@@ -11,7 +11,7 @@ function UrlForm() {
   const newsUrl = globalState.news.url;
   const newsDate = globalState.news.date;
   const apiServer = axios.create({
-    baseURL: "http://localhost:3086",
+    baseURL: "https://api.hackfake.swalah.co",
   });
 
   const handleUrlChange = (newUrl: string) => {
