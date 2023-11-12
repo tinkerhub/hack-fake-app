@@ -23,5 +23,4 @@ export {
     Home,
     Feed,
     FeedLayout,
-
 };
