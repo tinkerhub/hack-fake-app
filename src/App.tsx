@@ -1,4 +1,5 @@
-import { Feed } from "./components";
+import { Feed, Home, Login, Navbar } from "./components";
+
 
 function App() {
     return (
