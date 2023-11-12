@@ -8,7 +8,7 @@ interface Props {
 
 function FeedLayout({ children }: Props) {
     return (
-        <div>
+        <div className="flex flex-col h-screen">
             <Navbar />
             <>{children}</>
             <ScrollButtons />
