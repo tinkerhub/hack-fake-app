@@ -3,6 +3,7 @@ import Input from "./interface/Input";
 import ActionButton from "./interface/ActionButton";
 import Navbar from "./interface/Navbar";
 import ScrollButtons from "./interface/ScrollButtons";
+import FeedTitle from "./interface/FeedTitle";
 
 // Pages components
 import Login from "./pages/Login";
@@ -17,8 +18,10 @@ export {
     ActionButton,
     Navbar,
     ScrollButtons,
+    FeedTitle,
     Login,
     Home,
     Feed,
     FeedLayout,
+
 };
