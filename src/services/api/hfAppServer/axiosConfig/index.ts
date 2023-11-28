@@ -8,11 +8,9 @@ import axios from "axios";
 // import type {StoreType} from "@store/index";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type StoreType = any;
-
-import AxiosResponseInterceptors from "@services/api/commonInterceptors/AxiosResponseInterceptors";
-import HFAppServerAxiosResponseInterceptors from "@services/api/hfAppServer/axiosConfig/HFAppServerAxiosResponseInterceptors";
-import HFAppServerAxiosRequestInterceptors from "@services/api/hfAppServer/axiosConfig/HFAppServerAxiosRequestInterceptors";
-
+import AxiosResponseInterceptors from "../../commonInterceptors/AxiosResponseInterceptors";
+import HFAppServerAxiosResponseInterceptors from "../../hfAppServer/axiosConfig/HFAppServerAxiosResponseInterceptors";
+import HFAppServerAxiosRequestInterceptors from "../../hfAppServer/axiosConfig/HFAppServerAxiosRequestInterceptors";
 import {axiosRequestConfig} from "./AxiosServiceConstants";
 
 /**

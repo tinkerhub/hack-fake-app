@@ -1,9 +1,12 @@
 interface Props {
     label?: string;
     placeholder?: string;
+    value?: string;
+    type?: string;
+    onChange?: (params: any) => any;
 }
 
-function Input({ label, placeholder }: Props) {
+function Input({ type, value, label, placeholder, onChange }: Props) {
     return (
         <div className="form-control w-full">
             {label && (
@@ -12,9 +15,11 @@ function Input({ label, placeholder }: Props) {
                 </label>
             )}
             <input
-                type="text"
+                type={type}
                 placeholder={placeholder || ""}
+                value= {value}
                 className="input placeholder:text-sm placeholder:text-offtext input-bordered focus:outline-none w-full bg-transparent border-dark"
+                onChange = {onChange}
             />
         </div>
     );

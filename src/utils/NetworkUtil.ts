@@ -2,7 +2,7 @@ import {AxiosResponse} from "axios";
 
 import {iGenericServiceResult} from "@/customTypes/ApiServiceTypes";
 
-export default function buildResultOnFullFilled<SuccessDataType>(
+export function buildResultOnFullFilled<SuccessDataType>(
 	value: AxiosResponse,
 ): iGenericServiceResult<SuccessDataType> {
 	const {data} = value;
@@ -12,7 +12,7 @@ export default function buildResultOnFullFilled<SuccessDataType>(
 	return responseBody;
 }
 
-function buildResultOnRejected<SuccessDataType = null>(
+export function buildResultOnRejected<SuccessDataType = null>(
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	reason: any,
 ): iGenericServiceResult<SuccessDataType> {
@@ -23,5 +23,4 @@ function buildResultOnRejected<SuccessDataType = null>(
 
 	return responseBody;
 }
-
-export {buildResultOnFullFilled, buildResultOnRejected};
+// export {buildResultOnFullFilled, buildResultOnRejected};
