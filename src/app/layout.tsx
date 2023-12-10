@@ -18,6 +18,9 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en">
+			<head>
+				<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+			</head>
 			<body className={inter.className}>
 				<ReduxProvider>{children}</ReduxProvider>
 			</body>
