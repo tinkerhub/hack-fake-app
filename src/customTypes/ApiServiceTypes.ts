@@ -19,7 +19,12 @@ interface iServiceError {
 	validationErrors?: ValidationErrorsType | null;
 }
 
+interface iServiceSuccess {
+	message: string;
+}
+
 type NullableServiceError = iServiceError | null;
+type NullableServiceSuccess = iServiceSuccess | null;
 
 interface iGenericServiceResult<SuccessDataType> {
 	isSuccess: boolean;
@@ -38,6 +43,7 @@ export type {
 	iResponseMeta,
 	iServiceError,
 	NullableServiceError,
+	NullableServiceSuccess,
 	iGenericServiceResult,
 	NullableGenericServiceResult,
 };

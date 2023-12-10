@@ -1,34 +1,50 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"paths": {
 			"@/*": ["./src/*"],
 			"@assets/*": ["./src/assets/*"],
+			"@components/*": ["./src/components/*"],
 			"@config/*": ["./src/config/*"],
+			"@constants/*": ["./src/constants/*"],
 			"@customTypes/*": ["./src/customTypes/*"],
 			"@services/*": ["./src/services/*"],
-			"@components/*": ["./src/components/*"],
+			"@store/*": ["./src/store/*"],
+			"@styles/*": ["./src/styles/*"],
 			"@utils/*": ["./src/utils/*"]
 		}
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+	},
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"src/app/layout.tsx",
+		"ecosystem-staging.config.js",
+		"tailwind.config.js",
+		"postcss.config.js"
+	],
+	"exclude": [
+		"node_modules",
+		"next.config.js",
+		"ecosystem-staging.config.js",
+		"archive"
+	]
 }
