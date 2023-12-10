@@ -21,10 +21,13 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@assets/*": ["./src/assets/*"],
+			"@components/*": ["./src/components/*"],
 			"@config/*": ["./src/config/*"],
+			"@constants/*": ["./src/constants/*"],
 			"@customTypes/*": ["./src/customTypes/*"],
 			"@services/*": ["./src/services/*"],
-			"@components/*": ["./src/components/*"],
+			"@store/*": ["./src/store/*"],
+			"@styles/*": ["./src/styles/*"],
 			"@utils/*": ["./src/utils/*"]
 		}
 	},
