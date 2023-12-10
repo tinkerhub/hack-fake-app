@@ -62,4 +62,8 @@ export const apiEndpoints = Object.freeze({
 	annotation: {
 		fetchAllAnnotationOptions: "/annotations",
 	},
+
+	news: {
+		submitNews: "/news",
+	},
 });
