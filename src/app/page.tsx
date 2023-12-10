@@ -1,98 +1,37 @@
+"use client";
+
 import React from "react";
 
 import Image from "next/image";
 
-import styles from "./page.module.css";
+import Images from "@/constants/Images";
+import Input from "@/components/Input";
+import ActionButton from "@/components/ActionButton";
 
-export default function Home() {
+export default function LoginPage() {
 	return (
-		<main className={styles.main}>
-			<div className={styles.description}>
-				<p>
-					Get started by editing&nbsp;
-					<code className={styles.code}>src/app/page.tsx</code>
-				</p>
-				<div>
-					<a
-						href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						By{" "}
-						<Image
-							src="/vercel.svg"
-							alt="Vercel Logo"
-							className={styles.vercelLogo}
-							width={100}
-							height={24}
-							priority
-						/>
-					</a>
-				</div>
-			</div>
+		<div className="flex flex-col h-screen md:flex-row">
+			<div className="bg-primary flex-1 flex overflow-hidden">
+				<h1 className="text-4xl font-bold text-background mt-auto ml-4 mb-4 lg:ml-12 lg:mb-12 lg:text-5xl">
+					hack <br /> fake
+				</h1>
 
-			<div className={styles.center}>
 				<Image
-					className={styles.logo}
-					src="/next.svg"
-					alt="Next.js Logo"
-					width={180}
-					height={37}
-					priority
+					src={Images.circleSVG}
+					alt="Two tone circle"
+					className="w-[320px] h-[320px] lg:w-[640px] lg:h-[640px] ml-auto -mr-32 mt-auto -mb-32 lg:-mr-64 lg:-mb-64"
 				/>
 			</div>
 
-			<div className={styles.grid}>
-				<a
-					href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Docs <span>-&gt;</span>
-					</h2>
-					<p>Find in-depth information about Next.js features and API.</p>
-				</a>
+			<div className="w-11/12 mx-auto py-8 md:w-2/5 md:py-0 my-auto md:px-8 lg:px-16 md:flex md:flex-col md:gap-6">
+				<h1 className="text-3xl font-bold hidden md:block">Welcome!</h1>
 
-				<a
-					href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Learn <span>-&gt;</span>
-					</h2>
-					<p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-				</a>
-
-				<a
-					href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Templates <span>-&gt;</span>
-					</h2>
-					<p>Explore the Next.js 13 playground.</p>
-				</a>
-
-				<a
-					href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Deploy <span>-&gt;</span>
-					</h2>
-					<p>
-						Instantly deploy your Next.js site to a shareable URL with Vercel.
-					</p>
-				</a>
+				<form className="flex flex-col gap-4">
+					<Input placeholder="Email" />
+					<Input placeholder="Password" />
+					<ActionButton text="Login" />
+				</form>
 			</div>
-		</main>
+		</div>
 	);
 }

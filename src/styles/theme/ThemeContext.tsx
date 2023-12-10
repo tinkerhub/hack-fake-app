@@ -5,8 +5,7 @@
  */
 import React from "react";
 
-import {themeIds, defaultThemeId} from "@config/constants/ThemeConstants";
-
+import {themeIds, defaultThemeId} from "@/constants/ThemeConstants";
 import {iProvidedValue, iTheme} from "@/customTypes/ThemeTypes";
 
 import DefaultLightTheme from "./DefaultLightTheme";

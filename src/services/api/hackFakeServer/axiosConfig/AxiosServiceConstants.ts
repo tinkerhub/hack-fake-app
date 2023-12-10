@@ -1,8 +1,8 @@
 import {AxiosRequestConfig} from "axios";
 
-import env from "@/config/env";
+import config from "@/config";
 
-const API_SERVER_BASE_URL_DEV = env.NEXT_PUBLIC_HACK_FAKE_SERVER_BASE_URL;
+const API_SERVER_BASE_URL_DEV = config.NEXT_PUBLIC_HACK_FAKE_SERVER_BASE_URL;
 
 /**
  * The base url of the api server's endpoint needs to be configured here.
@@ -21,7 +21,7 @@ const API_SERVER_BASE_URL = API_SERVER_BASE_URL_DEV;
  * a remote configuration manger.
  */
 const API_SERVER_REQUEST_TIMEOUT =
-	env.NEXT_PUBLIC_HACK_FAKE_SEVER_REQUEST_TIMEOUT;
+	config.NEXT_PUBLIC_HACK_FAKE_SEVER_REQUEST_TIMEOUT;
 
 /**
  * All basic axios request-configurations needs to be set here.

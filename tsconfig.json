@@ -37,7 +37,9 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"src/app/layout.tsx",
-		"ecosystem-staging.config.js"
+		"ecosystem-staging.config.js",
+		"tailwind.config.js",
+		"postcss.config.js"
 	],
 	"exclude": [
 		"node_modules",
