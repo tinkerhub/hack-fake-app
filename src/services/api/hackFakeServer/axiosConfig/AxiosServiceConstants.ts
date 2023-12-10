@@ -58,4 +58,8 @@ export const apiEndpoints = Object.freeze({
 	auth: {
 		signIn: "/auth/signin",
 	},
+
+	annotation: {
+		fetchAllAnnotationOptions: "/annotations",
+	},
 });
