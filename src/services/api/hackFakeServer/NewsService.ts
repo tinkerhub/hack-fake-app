@@ -38,8 +38,46 @@ function NewsService(apiServer: AxiosInstance) {
 		return result;
 	};
 
+	const annotateNews = async (
+		newsId: string,
+		annotations: Array<string>,
+	): Promise<NullableGenericServiceResult<null>> => {
+		let result: NullableGenericServiceResult<null> = null;
+
+		await apiServer
+			.post(apiEndpoints.news.annotateNews, {
+				newsId,
+				annotations,
+			})
+			.then(
+				// onFullFilled
+				(value) => {
+					console.log(
+						"🚀 ~ file: NewsService.ts:55 ~ NewsService ~ value:",
+						value,
+					);
+					result = buildResultOnFullFilled<null>(value);
+				},
+
+				// onRejected
+				(reason) => {
+					console.log(
+						"🚀 ~ file: NewsService.ts:64 ~ NewsService ~ reason:",
+						reason,
+					);
+					result = buildResultOnRejected(reason);
+				},
+			)
+			.catch((error) => {
+				throw error;
+			});
+
+		return result;
+	};
+
 	return {
 		submitNews,
+		annotateNews,
 	};
 }
 

@@ -16,7 +16,8 @@ const initialState: iAuthState = {
 	isAuthenticated: false,
 
 	tokens: {
-		accessToken: "",
+		accessToken:
+			"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxZGIxYzFkMi0xOWE2LTRjM2QtYjdkNS1lNzhjNTM4MGY3MmQiLCJpYXQiOjE3MDIyMzkyNjUsImV4cCI6MTcwMjIzOTU2NSwianRpIjoiZTEzNWI2MzYtNDdjNC00ZjkwLWE3MzUtMzZkZDEzODQ3ZGZmIn0.TexPhCqeJxDxJwi55B7AQFxIH-kUC7CA5tNcJdYcVvVYMSAWMDZJVls9H7aHqNpFVjk2mTVAlo5BYyn0D9DHmw",
 		refreshToken: "",
 	},
 };

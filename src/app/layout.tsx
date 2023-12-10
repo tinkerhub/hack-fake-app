@@ -1,8 +1,8 @@
 import React from "react";
 
-import {ReduxProvider} from "@/store/Provider";
-
 import "./globals.css";
+
+import {ReduxProvider} from "@/store/Provider";
 
 import type {Metadata} from "next";
 

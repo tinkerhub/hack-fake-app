@@ -1,11 +1,6 @@
-/**
- * NOTE: Currently we're not using redux in this project.
- * The type of this will be changed to the proper
- * redux store type once we start using redux.
- */
-// import type {StoreType} from "@store/index";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type StoreType = any;
+import type {StoreType} from "@store/index";
+
+import {injectStore as hackFakeServerInjectStore} from "@/services/api/hackFakeServer";
 
 /**
  * Injects redux-store to the local variable reduxStore which gets used
@@ -16,5 +11,7 @@ type StoreType = any;
  *
  * @param store
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const injectStore = (store: StoreType): void => {};
+export const injectStore = (store: StoreType): void => {
+	console.log("🚀 ~ file: index.ts:15 ~ injectStore ~ store:");
+	hackFakeServerInjectStore(store);
+};

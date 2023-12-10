@@ -4,7 +4,7 @@ import {apiResponseStatuses} from "@/customTypes/NetworkTypes";
 import {iStateMessage} from "@/customTypes/GenericReduxTypes";
 
 import {iNewsState, REDUCER_NAME} from "./Types";
-import {submitNews} from "./ThunkActions";
+import {submitNews, annotateNews} from "./ThunkActions";
 
 const initialState: iNewsState = {
 	isLoading: false,
@@ -43,6 +43,29 @@ export const newsSlice = createSlice({
 		});
 
 		builder.addCase(submitNews.rejected, (state, action) => {
+			const {message} = action.payload as iStateMessage;
+
+			state.responseStatus = apiResponseStatuses.ERROR;
+			state.message = message;
+
+			state.newsId = null;
+
+			state.isLoading = false;
+		});
+
+		builder.addCase(annotateNews.pending, (state) => {
+			state.isLoading = true;
+			state.responseStatus = apiResponseStatuses.IDLE;
+		});
+
+		builder.addCase(annotateNews.fulfilled, (state) => {
+			state.responseStatus = apiResponseStatuses.SUCCESS;
+			state.message = null;
+
+			state.isLoading = false;
+		});
+
+		builder.addCase(annotateNews.rejected, (state, action) => {
 			const {message} = action.payload as iStateMessage;
 
 			state.responseStatus = apiResponseStatuses.ERROR;
