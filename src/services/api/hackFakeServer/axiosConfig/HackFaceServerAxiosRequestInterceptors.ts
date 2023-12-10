@@ -1,14 +1,13 @@
 import {AxiosInstance} from "axios";
 
+import type {StoreType} from "@store/index";
+
 import type {AxiosRequestHeaders, InternalAxiosRequestConfig} from "axios";
 /**
  * NOTE: Currently we're not using redux in this project.
  * The type of this will be changed to the proper
  * redux store type once we start using redux.
  */
-// import type {StoreType} from "@store/index";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type StoreType = any;
 
 /**
  * Mapping all the requestInterceptors defined as closures inside this function
@@ -31,14 +30,23 @@ function HackFaceServerAxiosRequestInterceptors(
 	function requestAuthorizationInterceptor(
 		config: InternalAxiosRequestConfig,
 	): InternalAxiosRequestConfig {
+		console.log(
+			"🚀 ~ file: HackFaceServerAxiosRequestInterceptors.ts:34 ~ store:",
+			store,
+		);
 		if (store) {
 			// setting authorization header
+			console.log(
+				"🚀 ~ file: HackFaceServerAxiosRequestInterceptors.ts:45 ~ store.getState().authReducer.tokens.accessToken:",
+				store.getState().authReducer.tokens.accessToken,
+			);
 			return {
 				...config,
 				headers: {
 					...config.headers,
-					// TODO: add authorization header
-					Authorization: "",
+					Authorization: `Bearer ${
+						store.getState().authReducer.tokens.accessToken
+					}`,
 				} as AxiosRequestHeaders,
 			};
 		}

@@ -58,4 +58,16 @@ export const apiEndpoints = Object.freeze({
 	auth: {
 		signIn: "/auth/signin",
 	},
+
+	annotation: {
+		fetchAllAnnotationOptions: "/annotations",
+	},
+
+	news: {
+		submitNews: "/news",
+		annotateNews: "/news/annotate",
+		predictNews: (newsId: string) => {
+			return `/news/${newsId}/predict`;
+		},
+	},
 });
