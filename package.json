@@ -1,0 +1,92 @@
+{
+	"name": "hack-fake-app",
+	"packageManager": "yarn@3.5.0",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"check-types": "tsc --noemit",
+		"eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+		"next-lint": "next lint . --ext .js,.jsx,.ts,.tsx",
+		"lint": "yarn eslint && yarn check-types",
+		"format": "prettier --check \"src/**/*.ts\"",
+		"postinstall": "husky install",
+		"start:dev": "next dev",
+		"build": "next build",
+		"start:production": "next start",
+		"bump-version": "npm version --no-git-tag-version",
+		"get-next-version": "ts-node -P tsconfig.scripts.json ./.standard-version/commands/ComputeNextVersion.ts",
+		"release-branch": "git flow release start $(ts-node -P tsconfig.scripts.json ./.standard-version/commands/ComputeNextVersion.ts)",
+		"release": "standard-version"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"prettier --write",
+			"eslint --fix"
+		]
+	},
+	"standard-version": {
+		"skip": {
+			"tag": true
+		},
+		"scripts": {
+			"postcommit": "ts-node -P tsconfig.scripts.json ./.standard-version/commands/FixGitFlowReleaseBranchName.ts"
+		}
+	},
+	"dependencies": {
+		"@radix-ui/react-accordion": "^1.1.2",
+		"@radix-ui/react-avatar": "^1.0.3",
+		"@radix-ui/react-dialog": "^1.0.4",
+		"@radix-ui/react-form": "^0.0.3",
+		"@radix-ui/react-label": "^2.0.2",
+		"@radix-ui/react-scroll-area": "^1.0.4",
+		"@radix-ui/react-separator": "^1.0.3",
+		"@radix-ui/react-toast": "^1.1.5",
+		"@types/node": "20.5.6",
+		"@types/react": "18.2.21",
+		"@types/react-dom": "18.2.7",
+		"@types/react-lottie": "^1.2.6",
+		"axios": "^1.4.0",
+		"eslint": "8.48.0",
+		"eslint-config-next": "13.4.19",
+		"joi": "^17.10.2",
+		"leaflet": "^1.9.4",
+		"moment": "^2.29.4",
+		"next": "13.4.19",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-leaflet": "^4.2.1",
+		"react-lottie": "^1.2.3",
+		"react-markdown": "^8.0.7",
+		"react-otp-input": "^3.0.4",
+		"remixicon": "^3.5.0",
+		"sass": "^1.66.1",
+		"sharp": "^0.32.6",
+		"typescript": "5.1.6"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.7.1",
+		"@commitlint/config-conventional": "^17.7.0",
+		"@types/conventional-recommended-bump": "^6.1.0",
+		"@types/leaflet": "^1.9.4",
+		"@typescript-eslint/eslint-plugin": "^6.4.1",
+		"@typescript-eslint/parser": "^6.4.1",
+		"conventional-recommended-bump": "^7.0.1",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-import-resolver-typescript": "^3.6.0",
+		"eslint-plugin-import": "^2.28.1",
+		"eslint-plugin-prettier": "^5.0.0",
+		"eslint-plugin-react": "^7.33.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^14.0.1",
+		"prettier": "^3.0.2",
+		"semver": "^7.5.4",
+		"simple-git": "^3.19.1",
+		"standard-version": "^9.5.0",
+		"ts-node": "^10.9.1"
+	},
+	"volta": {
+		"node": "18.17.1",
+		"yarn": "3.6.3"
+	}
+}
