@@ -13,4 +13,8 @@ type MultiAnnotation = {
 	};
 };
 
-export type {iAnnotation, MultiAnnotation};
+interface iPredictedAnnotations {
+	annotationIds: StringArray;
+}
+
+export type {iAnnotation, MultiAnnotation, iPredictedAnnotations};

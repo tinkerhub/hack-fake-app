@@ -9,6 +9,7 @@ import {
 	iNewsId,
 	iNewsSubmissionDTO,
 } from "@/customTypes/appDataTypes/newsTypes";
+import {iPredictedAnnotations} from "@/customTypes/appDataTypes/annotationTypes";
 
 import {apiEndpoints} from "./axiosConfig/AxiosServiceConstants";
 
@@ -52,10 +53,6 @@ function NewsService(apiServer: AxiosInstance) {
 			.then(
 				// onFullFilled
 				(value) => {
-					console.log(
-						"🚀 ~ file: NewsService.ts:55 ~ NewsService ~ value:",
-						value,
-					);
 					result = buildResultOnFullFilled<null>(value);
 				},
 
@@ -75,9 +72,35 @@ function NewsService(apiServer: AxiosInstance) {
 		return result;
 	};
 
+	const predictNews = async (
+		newsId: string,
+	): Promise<NullableGenericServiceResult<iPredictedAnnotations>> => {
+		let result: NullableGenericServiceResult<iPredictedAnnotations> = null;
+
+		await apiServer
+			.get(apiEndpoints.news.predictNews(newsId))
+			.then(
+				// onFullFilled
+				(value) => {
+					result = buildResultOnFullFilled<iPredictedAnnotations>(value);
+				},
+
+				// onRejected
+				(reason) => {
+					result = buildResultOnRejected(reason);
+				},
+			)
+			.catch((error) => {
+				throw error;
+			});
+
+		return result;
+	};
+
 	return {
 		submitNews,
 		annotateNews,
+		predictNews,
 	};
 }
 

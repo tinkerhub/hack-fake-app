@@ -11,4 +11,6 @@ export interface iNewsState {
 	message: NullableString;
 
 	newsId: NullableString;
+
+	predictedIds: string[];
 }

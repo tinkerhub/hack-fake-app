@@ -4,7 +4,7 @@ import {apiResponseStatuses} from "@/customTypes/NetworkTypes";
 import {iStateMessage} from "@/customTypes/GenericReduxTypes";
 
 import {iNewsState, REDUCER_NAME} from "./Types";
-import {submitNews, annotateNews} from "./ThunkActions";
+import {submitNews, annotateNews, predictNews} from "./ThunkActions";
 
 const initialState: iNewsState = {
 	isLoading: false,
@@ -14,6 +14,8 @@ const initialState: iNewsState = {
 	message: null,
 
 	newsId: "bcb9e1f4-17b0-48f8-babf-e22fd2657a41",
+
+	predictedIds: [],
 };
 
 export const newsSlice = createSlice({
@@ -38,6 +40,7 @@ export const newsSlice = createSlice({
 			state.message = null;
 
 			state.newsId = action.payload.id;
+			state.predictedIds = [];
 
 			state.isLoading = false;
 		});
@@ -49,6 +52,7 @@ export const newsSlice = createSlice({
 			state.message = message;
 
 			state.newsId = null;
+			state.predictedIds = [];
 
 			state.isLoading = false;
 		});
@@ -71,7 +75,30 @@ export const newsSlice = createSlice({
 			state.responseStatus = apiResponseStatuses.ERROR;
 			state.message = message;
 
-			state.newsId = null;
+			state.isLoading = false;
+		});
+
+		builder.addCase(predictNews.pending, (state) => {
+			state.isLoading = true;
+			state.responseStatus = apiResponseStatuses.IDLE;
+		});
+
+		builder.addCase(predictNews.fulfilled, (state, action) => {
+			state.responseStatus = apiResponseStatuses.SUCCESS;
+			state.message = null;
+
+			state.predictedIds = action.payload.annotationIds;
+
+			state.isLoading = false;
+		});
+
+		builder.addCase(predictNews.rejected, (state, action) => {
+			const {message} = action.payload as iStateMessage;
+
+			state.responseStatus = apiResponseStatuses.ERROR;
+			state.message = message;
+
+			state.predictedIds = [];
 
 			state.isLoading = false;
 		});

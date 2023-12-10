@@ -8,6 +8,7 @@ import {
 	iNewsId,
 	iNewsSubmissionDTO,
 } from "@/customTypes/appDataTypes/newsTypes";
+import {iPredictedAnnotations} from "@/customTypes/appDataTypes/annotationTypes";
 
 import {REDUCER_NAME} from "./Types";
 
@@ -48,8 +49,6 @@ export const submitNews = createAsyncThunk<
 			});
 		}
 	} catch (error) {
-		console.log("🚀 ~ file: ThunkActions.ts:33 ~ > ~ error:", error);
-
 		return rejectWithValue({
 			message: "Something went wrong",
 		});
@@ -94,8 +93,47 @@ export const annotateNews = createAsyncThunk<
 			});
 		}
 	} catch (error) {
-		console.log("🚀 ~ file: ThunkActions.ts:33 ~ > ~ error:", error);
+		return rejectWithValue({
+			message: "Something went wrong",
+		});
+	}
+});
 
+export const predictNews = createAsyncThunk<
+	iPredictedAnnotations,
+	string,
+	{
+		rejectValue: iStateMessage;
+	}
+>(curriedThunkName("predictNews"), async (payload, {rejectWithValue}) => {
+	try {
+		const response = await newsService.predictNews(payload);
+
+		if (response) {
+			const {httpStatusCode, data, error} = response;
+
+			switch (httpStatusCode) {
+				case 200:
+					return data;
+				case 400: {
+					const message = error?.message || "Something went wrong";
+
+					return rejectWithValue({
+						httpStatusCode,
+						message,
+					});
+				}
+				default:
+					return rejectWithValue({
+						message: "Something went wrong",
+					});
+			}
+		} else {
+			return rejectWithValue({
+				message: "Something went wrong",
+			});
+		}
+	} catch (error) {
 		return rejectWithValue({
 			message: "Something went wrong",
 		});

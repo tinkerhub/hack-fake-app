@@ -66,5 +66,8 @@ export const apiEndpoints = Object.freeze({
 	news: {
 		submitNews: "/news",
 		annotateNews: "/news/annotate",
+		predictNews: (newsId: string) => {
+			return `/news/${newsId}/predict`;
+		},
 	},
 });
