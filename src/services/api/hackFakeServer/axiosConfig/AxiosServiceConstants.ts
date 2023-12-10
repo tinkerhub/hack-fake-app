@@ -55,7 +55,7 @@ export const axiosRequestConfig: AxiosRequestConfig =
  *
  */
 export const apiEndpoints = Object.freeze({
-	verification: {
-		requestEmailVerification: "/verification/request-email-verification",
+	auth: {
+		signIn: "/auth/signin",
 	},
 });

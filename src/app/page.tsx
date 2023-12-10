@@ -7,8 +7,38 @@ import Image from "next/image";
 import Images from "@/constants/Images";
 import Input from "@/components/Input";
 import ActionButton from "@/components/ActionButton";
+import {ComponentIdType} from "@/customTypes/CommonTypes";
+import {useAppDispatch, useAppSelector} from "@/store/Hooks";
+import {authenticate} from "@/store/auth/ThunkActions";
 
 export default function LoginPage() {
+	const [email, setEmail] = React.useState<string>("");
+	const [password, setPassword] = React.useState<string>("");
+
+	const dispatch = useAppDispatch();
+	const authState = useAppSelector((state) => {
+		return state.authReducer;
+	});
+
+	React.useEffect(() => {
+		console.log("🚀 ~ file: page.tsx:23 ~ LoginPage ~ authState:", authState);
+	}, [authState]);
+
+	const onChangeEmail = (id: ComponentIdType, value: string) => {
+		setEmail(value);
+	};
+
+	const onChangePassword = (id: ComponentIdType, value: string) => {
+		setPassword(value);
+	};
+
+	const onPressLogin = async () => {
+		if (email && email.length > 4 && password && password.length > 2) {
+			console.log("Clicked login :>> ", {email, password});
+			await dispatch(authenticate({email, password}));
+		}
+	};
+
 	return (
 		<div className="flex flex-col h-screen md:flex-row">
 			<div className="bg-primary flex-1 flex overflow-hidden">
@@ -27,9 +57,21 @@ export default function LoginPage() {
 				<h1 className="text-3xl font-bold hidden md:block">Welcome!</h1>
 
 				<form className="flex flex-col gap-4">
-					<Input placeholder="Email" />
-					<Input placeholder="Password" />
-					<ActionButton text="Login" />
+					<Input
+						placeholder="Email"
+						inputType="email"
+						value={email}
+						onChangeText={onChangeEmail}
+					/>
+
+					<Input
+						placeholder="Password"
+						value={password}
+						inputType={"password"}
+						onChangeText={onChangePassword}
+					/>
+
+					<ActionButton text="Login" onClick={onPressLogin} />
 				</form>
 			</div>
 		</div>

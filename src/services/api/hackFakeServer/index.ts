@@ -1,6 +1,6 @@
 import {apiServer} from "./axiosConfig";
-import VerificationService from "./VerificationService";
+import AuthService from "./AuthService";
 
-const verificationService = VerificationService(apiServer);
+const authService = AuthService(apiServer);
 
-export {verificationService};
+export {authService};

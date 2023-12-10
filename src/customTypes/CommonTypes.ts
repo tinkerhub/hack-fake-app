@@ -35,6 +35,7 @@ interface iNormalizedObject<T extends iNormalizedObjectValueBase> {
 type ColorValue = string;
 
 export type {
+	GenericNullable,
 	NullableNumber,
 	NullableString,
 	NullableBoolean,

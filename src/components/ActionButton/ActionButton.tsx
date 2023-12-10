@@ -15,6 +15,8 @@ function ActionButton({id, text, onClick}: iProps) {
 	const onClickHandler = async (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 	) => {
+		event.preventDefault();
+
 		if (onClick) {
 			await onClick(id, event);
 		}
