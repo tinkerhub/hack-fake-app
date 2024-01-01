@@ -8,9 +8,9 @@ import {useRouter} from "next/navigation";
 import Images from "@/constants/Images";
 import ActionButton from "@/components/ActionButton";
 import {ComponentIdType} from "@/customTypes/CommonTypes";
-import {useAppSelector} from "@/store/Hooks";
+import WithAuth from "@/components/WithAuth";
 
-export default function HomePage() {
+function HomePage() {
 	const router = useRouter();
 
 	const onPressStart = async (
@@ -20,17 +20,6 @@ export default function HomePage() {
 		event.preventDefault();
 		router.push("/submit-news");
 	};
-
-	const authState = useAppSelector((state) => {
-		return state.authReducer;
-	});
-
-	React.useEffect(() => {
-		console.log(
-			"🚀 ~ file: home-page.tsx:30 ~ React.useEffect ~ authState:",
-			authState,
-		);
-	}, [authState, router]);
 
 	return (
 		<div className="h-screen flex flex-col">
@@ -60,3 +49,5 @@ export default function HomePage() {
 		</div>
 	);
 }
+
+export default WithAuth(HomePage);

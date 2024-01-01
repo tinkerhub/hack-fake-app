@@ -28,7 +28,20 @@ export const authSlice = createSlice({
 
 	reducers: {
 		resetAuthState: () => {
-			return initialState;
+			return {
+				isLoading: false,
+
+				responseStatus: apiResponseStatuses.IDLE,
+
+				message: null,
+
+				isAuthenticated: false,
+
+				tokens: {
+					accessToken: "",
+					refreshToken: "",
+				},
+			};
 		},
 	},
 

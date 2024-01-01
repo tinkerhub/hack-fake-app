@@ -24,8 +24,18 @@ export const newsSlice = createSlice({
 	initialState,
 
 	reducers: {
-		resetAnnotationState: () => {
-			return initialState;
+		resetNewsState: () => {
+			return {
+				isLoading: false,
+
+				responseStatus: apiResponseStatuses.IDLE,
+
+				message: null,
+
+				newsId: null,
+
+				predictedIds: [],
+			};
 		},
 	},
 
@@ -105,6 +115,6 @@ export const newsSlice = createSlice({
 	},
 });
 
-export const {resetAnnotationState} = newsSlice.actions;
+export const {resetNewsState} = newsSlice.actions;
 
 export default newsSlice.reducer;

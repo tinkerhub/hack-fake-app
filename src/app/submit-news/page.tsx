@@ -11,20 +11,18 @@ import TitleForm from "@/components/TitleForm";
 import ScrollButtons from "@/components/ScrollButtons";
 import ContentForm from "@/components/ContentForm";
 import URLForm from "@/components/URLForm";
-import PredictAnnotationPicker from "@/components/PredictAnnotationPicker";
 import {ComponentIdType} from "@/customTypes/CommonTypes";
 import Loader from "@/components/Loader";
-import {fetchAllAnnotationOptions} from "@/store/annotation/ThunkActions";
 import {apiResponseStatuses} from "@/customTypes/NetworkTypes";
+import WithAuth from "@/components/WithAuth";
 
 enum inputForms {
 	TITLE = "TITLE",
 	CONTENT = "CONTENT",
 	URL = "URL",
-	PREDICT_ANNOTATE = "PREDICT_ANNOTATE",
 }
 
-export default function SubmitNewsPage() {
+function SubmitNewsPage() {
 	const [currentInputForm, setInputForm] = useState<inputForms>(
 		inputForms.TITLE,
 	);
@@ -39,23 +37,14 @@ export default function SubmitNewsPage() {
 
 	const dispatch = useAppDispatch();
 
-	const authState = useAppSelector((state) => {
-		return state.authReducer;
-	});
-
-	const annotationState = useAppSelector((state) => {
-		return state.annotationReducer;
-	});
-
 	const newsState = useAppSelector((state) => {
 		return state.newsReducer;
 	});
 
 	useEffect(() => {
-		const {isLoading: isAnnotationStateLoading} = annotationState;
 		const {isLoading: isNewsStateLoading} = newsState;
 
-		const isLoading = isAnnotationStateLoading || isNewsStateLoading;
+		const isLoading = isNewsStateLoading;
 
 		setIsLoading((prvState) => {
 			if (prvState !== isLoading) {
@@ -64,37 +53,14 @@ export default function SubmitNewsPage() {
 				return prvState;
 			}
 		});
-	}, [annotationState, newsState]);
+	}, [newsState]);
 
 	useEffect(() => {
-		dispatch(fetchAllAnnotationOptions());
-	}, []);
-
-	useEffect(() => {
-		console.log(
-			"🚀 ~ file: home-page.tsx:30 ~ React.useEffect ~ authState:",
-			authState,
-		);
-	}, [authState, router]);
-
-	useEffect(() => {
-		console.log(
-			"🚀 ~ file: page.tsx:45 ~ annotationState ~ annotationState:",
-			annotationState,
-		);
-	}, [annotationState, router]);
-
-	useEffect(() => {
-		console.log(
-			"🚀 ~ file: page.tsx:59 ~ SubmitNewsPage ~ newsState:",
-			newsState,
-		);
-
 		const {isLoading, responseStatus, newsId} = newsState;
 
 		if (isLoading === false && responseStatus === apiResponseStatuses.SUCCESS) {
 			if (newsId) {
-				setInputForm(inputForms.PREDICT_ANNOTATE);
+				router.push("/predict-annotate");
 			}
 		}
 	}, [newsState, router]);
@@ -161,24 +127,6 @@ export default function SubmitNewsPage() {
 		);
 	};
 
-	const onClickPredict = () => {
-		console.log("🚀 ~ file: page.tsx:99 ~ onClickPredict ~ id:", {
-			newsTitle,
-			newsUrl,
-			newsDate,
-			newsContent,
-		});
-	};
-
-	const onClickAnnotate = () => {
-		console.log("🚀 ~ file: page.tsx:99 ~ onClickAnnotate ~ id:", {
-			newsTitle,
-			newsUrl,
-			newsDate,
-			newsContent,
-		});
-	};
-
 	const renderInputForm = () => {
 		switch (currentInputForm) {
 			case inputForms.TITLE:
@@ -210,15 +158,6 @@ export default function SubmitNewsPage() {
 					/>
 				);
 
-			case inputForms.PREDICT_ANNOTATE:
-				return (
-					<PredictAnnotationPicker
-						titleValue={"What would you like to do?"}
-						onClickPredict={onClickPredict}
-						onClickAnnotate={onClickAnnotate}
-					/>
-				);
-
 			default:
 				return null;
 		}
@@ -243,3 +182,5 @@ export default function SubmitNewsPage() {
 		</div>
 	);
 }
+
+export default WithAuth(SubmitNewsPage);

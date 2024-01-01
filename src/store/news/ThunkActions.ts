@@ -68,6 +68,7 @@ export const annotateNews = createAsyncThunk<
 			payload.newsId,
 			payload.annotations,
 		);
+		console.log("🚀 ~ file: ThunkActions.ts:71 ~ > ~ response:", response);
 
 		if (response) {
 			const {httpStatusCode, data, error} = response;
