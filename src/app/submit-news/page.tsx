@@ -1,10 +1,11 @@
 "use client";
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import {useRouter} from "next/navigation";
 
-import {useAppSelector} from "@/store/Hooks";
+import {useAppDispatch, useAppSelector} from "@/store/Hooks";
+import {submitNews} from "@/store/news/ThunkActions";
 import Navbar from "@/components/Navbar";
 import TitleForm from "@/components/TitleForm";
 import ScrollButtons from "@/components/ScrollButtons";
@@ -12,6 +13,9 @@ import ContentForm from "@/components/ContentForm";
 import URLForm from "@/components/URLForm";
 import PredictAnnotationPicker from "@/components/PredictAnnotationPicker";
 import {ComponentIdType} from "@/customTypes/CommonTypes";
+import Loader from "@/components/Loader";
+import {fetchAllAnnotationOptions} from "@/store/annotation/ThunkActions";
+import {apiResponseStatuses} from "@/customTypes/NetworkTypes";
 
 enum inputForms {
 	TITLE = "TITLE",
@@ -25,6 +29,7 @@ export default function SubmitNewsPage() {
 		inputForms.TITLE,
 	);
 
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [newsTitle, setNewsTitle] = useState<string>("");
 	const [newsContent, setNewsContent] = useState<string>("");
 	const [newsDate, setNewsDate] = useState<string>("");
@@ -32,16 +37,67 @@ export default function SubmitNewsPage() {
 
 	const router = useRouter();
 
+	const dispatch = useAppDispatch();
+
 	const authState = useAppSelector((state) => {
 		return state.authReducer;
 	});
 
-	React.useEffect(() => {
+	const annotationState = useAppSelector((state) => {
+		return state.annotationReducer;
+	});
+
+	const newsState = useAppSelector((state) => {
+		return state.newsReducer;
+	});
+
+	useEffect(() => {
+		const {isLoading: isAnnotationStateLoading} = annotationState;
+		const {isLoading: isNewsStateLoading} = newsState;
+
+		const isLoading = isAnnotationStateLoading || isNewsStateLoading;
+
+		setIsLoading((prvState) => {
+			if (prvState !== isLoading) {
+				return isLoading;
+			} else {
+				return prvState;
+			}
+		});
+	}, [annotationState, newsState]);
+
+	useEffect(() => {
+		dispatch(fetchAllAnnotationOptions());
+	}, []);
+
+	useEffect(() => {
 		console.log(
 			"🚀 ~ file: home-page.tsx:30 ~ React.useEffect ~ authState:",
 			authState,
 		);
 	}, [authState, router]);
+
+	useEffect(() => {
+		console.log(
+			"🚀 ~ file: page.tsx:45 ~ annotationState ~ annotationState:",
+			annotationState,
+		);
+	}, [annotationState, router]);
+
+	useEffect(() => {
+		console.log(
+			"🚀 ~ file: page.tsx:59 ~ SubmitNewsPage ~ newsState:",
+			newsState,
+		);
+
+		const {isLoading, responseStatus, newsId} = newsState;
+
+		if (isLoading === false && responseStatus === apiResponseStatuses.SUCCESS) {
+			if (newsId) {
+				setInputForm(inputForms.PREDICT_ANNOTATE);
+			}
+		}
+	}, [newsState, router]);
 
 	const onPressNext = () => {
 		setInputForm((prvState) => {
@@ -50,7 +106,8 @@ export default function SubmitNewsPage() {
 			} else if (prvState === inputForms.CONTENT) {
 				return inputForms.URL;
 			} else if (prvState === inputForms.URL) {
-				return inputForms.PREDICT_ANNOTATE;
+				onPressLastNext();
+				return prvState;
 			} else {
 				return inputForms.TITLE;
 			}
@@ -91,6 +148,17 @@ export default function SubmitNewsPage() {
 		const value = event.target.value;
 
 		setNewsUrl(value);
+	};
+
+	const onPressLastNext = () => {
+		dispatch(
+			submitNews({
+				title: newsTitle,
+				date: newsDate,
+				url: newsUrl,
+				content: newsContent,
+			}),
+		);
 	};
 
 	const onClickPredict = () => {
@@ -156,11 +224,20 @@ export default function SubmitNewsPage() {
 		}
 	};
 
+	const renderLoader = () => {
+		if (isLoading) {
+			return <Loader />;
+		} else {
+			return null;
+		}
+	};
+
 	return (
 		<div className="bg-background text-text min-h-screen">
 			<div className="flex flex-col h-screen">
 				<Navbar />
-				{renderInputForm()}
+				{!isLoading && renderInputForm()}
+				{renderLoader()}
 				<ScrollButtons />
 			</div>
 		</div>

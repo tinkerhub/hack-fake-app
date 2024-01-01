@@ -13,7 +13,7 @@ const initialState: iNewsState = {
 
 	message: null,
 
-	newsId: "bcb9e1f4-17b0-48f8-babf-e22fd2657a41",
+	newsId: null,
 
 	predictedIds: [],
 };
