@@ -83,7 +83,8 @@ function PredictAnnotatePage() {
 	}, [newsState, router]);
 
 	const onClickPredict = () => {
-		setInputForm(inputForms.PREDICT);
+		// setInputForm(inputForms.PREDICT);
+		alert("Sorry, not available now");
 	};
 
 	const onClickAnnotate = () => {
