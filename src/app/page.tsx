@@ -3,6 +3,7 @@
 import React from "react";
 
 import Image from "next/image";
+import {useRouter} from "next/navigation";
 
 import Images from "@/constants/Images";
 import Input from "@/components/Input";
@@ -10,8 +11,11 @@ import ActionButton from "@/components/ActionButton";
 import {ComponentIdType} from "@/customTypes/CommonTypes";
 import {useAppDispatch, useAppSelector} from "@/store/Hooks";
 import {authenticate} from "@/store/auth/ThunkActions";
+import {apiResponseStatuses} from "@/customTypes/NetworkTypes";
 
 export default function LoginPage() {
+	const router = useRouter();
+
 	const [email, setEmail] = React.useState<string>("");
 	const [password, setPassword] = React.useState<string>("");
 
@@ -22,7 +26,14 @@ export default function LoginPage() {
 
 	React.useEffect(() => {
 		console.log("🚀 ~ file: page.tsx:23 ~ LoginPage ~ authState:", authState);
-	}, [authState]);
+		if (
+			!authState.isLoading &&
+			authState.responseStatus === apiResponseStatuses.SUCCESS &&
+			authState.isAuthenticated
+		) {
+			router.push("/home");
+		}
+	}, [authState, router]);
 
 	const onChangeEmail = (id: ComponentIdType, value: string) => {
 		setEmail(value);

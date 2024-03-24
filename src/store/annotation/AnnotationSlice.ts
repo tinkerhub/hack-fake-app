@@ -27,7 +27,19 @@ export const authSlice = createSlice({
 
 	reducers: {
 		resetAnnotationState: () => {
-			return initialState;
+			return {
+				isLoading: false,
+
+				responseStatus: apiResponseStatuses.IDLE,
+
+				message: null,
+
+				annotationOptions: {
+					ids: [],
+
+					items: {},
+				},
+			};
 		},
 	},
 

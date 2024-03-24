@@ -13,7 +13,7 @@ const initialState: iNewsState = {
 
 	message: null,
 
-	newsId: "bcb9e1f4-17b0-48f8-babf-e22fd2657a41",
+	newsId: null,
 
 	predictedIds: [],
 };
@@ -24,8 +24,18 @@ export const newsSlice = createSlice({
 	initialState,
 
 	reducers: {
-		resetAnnotationState: () => {
-			return initialState;
+		resetNewsState: () => {
+			return {
+				isLoading: false,
+
+				responseStatus: apiResponseStatuses.IDLE,
+
+				message: null,
+
+				newsId: null,
+
+				predictedIds: [],
+			};
 		},
 	},
 
@@ -105,6 +115,6 @@ export const newsSlice = createSlice({
 	},
 });
 
-export const {resetAnnotationState} = newsSlice.actions;
+export const {resetNewsState} = newsSlice.actions;
 
 export default newsSlice.reducer;
