@@ -1,0 +1,8 @@
+# Ignore artifacts:
+build
+
+# Ignore strapi-admin
+strapi-admin
+
+# Old code archive folder
+archive
