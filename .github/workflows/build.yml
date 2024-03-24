@@ -1,37 +1,45 @@
 name: Next Build
+
 on:
   push:
     branches: ["main", "master"]
   workflow_dispatch:
+
 jobs:
   deploy-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checks out repo
         uses: actions/checkout@v4
-      - name: Setup Node
-        id: setup-node
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'yarn'
-          # cache: 'npm' # https://github.com/actions/setup-node#caching-packages-dependencies
-      - name: Install Dependancies
-        run: yarn install --prefer-offline --frozen-lockfile
-      - run: yarn build
 
-      - name: Copy Build
+      - name: Enable Corepack and Set Yarn Version
         run: |
-          mkdir build
+          corepack enable
+          corepack prepare yarn@3.5.0 --activate
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build Project
+        run: yarn build
+
+      - name: Prepare Build Directory
+        run: |
+          mkdir -p build
           mv .next build
-          mv package.json build
-          mv yarn.lock build
-          
+          cp package.json build/
+          cp yarn.lock build/
+
       - name: Push Build
         uses: s0/git-publish-subdir-action@develop
+        with:
+          branch: build
+          directory: build
         env:
-          REPO: self
-          BRANCH: build # The branch name where you want to push the assets
-          FOLDER: build # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: {msg}" # The commit message
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Build: {msg}"
