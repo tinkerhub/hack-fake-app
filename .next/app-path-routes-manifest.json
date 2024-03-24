@@ -1,0 +1,8 @@
+{
+  "/icon.svg/route": "/icon.svg",
+  "/page": "/",
+  "/annotation-success/page": "/annotation-success",
+  "/home/page": "/home",
+  "/predict-annotate/page": "/predict-annotate",
+  "/submit-news/page": "/submit-news"
+}
