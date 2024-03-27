@@ -23,7 +23,6 @@ export const submitNews = createAsyncThunk<
 >(curriedThunkName("submitNews"), async (payload, {rejectWithValue}) => {
 	try {
 		const response = await newsService.submitNews(payload);
-		console.log("🚀 ~ file: ThunkActions.ts:26 ~ > ~ response:", response);
 
 		if (response) {
 			const {httpStatusCode, data, error} = response;
@@ -68,7 +67,6 @@ export const annotateNews = createAsyncThunk<
 			payload.newsId,
 			payload.annotations,
 		);
-		console.log("🚀 ~ file: ThunkActions.ts:71 ~ > ~ response:", response);
 
 		if (response) {
 			const {httpStatusCode, data, error} = response;

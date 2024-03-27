@@ -12,6 +12,5 @@ import {injectStore as hackFakeServerInjectStore} from "@/services/api/hackFakeS
  * @param store
  */
 export const injectStore = (store: StoreType): void => {
-	console.log("🚀 ~ file: index.ts:15 ~ injectStore ~ store:");
 	hackFakeServerInjectStore(store);
 };

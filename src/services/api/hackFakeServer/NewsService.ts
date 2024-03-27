@@ -58,10 +58,6 @@ function NewsService(apiServer: AxiosInstance) {
 
 				// onRejected
 				(reason) => {
-					console.log(
-						"🚀 ~ file: NewsService.ts:64 ~ NewsService ~ reason:",
-						reason,
-					);
 					result = buildResultOnRejected(reason);
 				},
 			)

@@ -46,8 +46,6 @@ export const authenticate = createAsyncThunk<
 			});
 		}
 	} catch (error) {
-		console.log("🚀 ~ file: ThunkActions.ts:33 ~ > ~ error:", error);
-
 		return rejectWithValue({
 			message: "Something went wrong",
 		});

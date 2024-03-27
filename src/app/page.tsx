@@ -25,7 +25,6 @@ export default function LoginPage() {
 	});
 
 	React.useEffect(() => {
-		console.log("🚀 ~ file: page.tsx:23 ~ LoginPage ~ authState:", authState);
 		if (
 			!authState.isLoading &&
 			authState.responseStatus === apiResponseStatuses.SUCCESS &&
@@ -45,7 +44,6 @@ export default function LoginPage() {
 
 	const onPressLogin = async () => {
 		if (email && email.length > 4 && password && password.length > 2) {
-			console.log("Clicked login :>> ", {email, password});
 			await dispatch(authenticate({email, password}));
 		}
 	};

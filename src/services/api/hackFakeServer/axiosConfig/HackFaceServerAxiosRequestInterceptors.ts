@@ -30,16 +30,8 @@ function HackFaceServerAxiosRequestInterceptors(
 	function requestAuthorizationInterceptor(
 		config: InternalAxiosRequestConfig,
 	): InternalAxiosRequestConfig {
-		console.log(
-			"🚀 ~ file: HackFaceServerAxiosRequestInterceptors.ts:34 ~ store:",
-			store,
-		);
 		if (store) {
 			// setting authorization header
-			console.log(
-				"🚀 ~ file: HackFaceServerAxiosRequestInterceptors.ts:45 ~ store.getState().authReducer.tokens.accessToken:",
-				store.getState().authReducer.tokens.accessToken,
-			);
 			return {
 				...config,
 				headers: {
