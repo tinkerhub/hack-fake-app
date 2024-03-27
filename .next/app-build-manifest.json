@@ -8,7 +8,7 @@
       "static/chunks/771-268b9aea8536e8f7.js",
       "static/chunks/470-a7ed6341bd412188.js",
       "static/chunks/758-7023ffe89f0639f5.js",
-      "static/chunks/app/page-eaf0cd5a5ddbaefa.js"
+      "static/chunks/app/page-1a2ac8308f5b7b58.js"
     ],
     "/layout": [
       "static/chunks/webpack-4ca57f26c049f58b.js",
@@ -17,9 +17,9 @@
       "static/chunks/main-app-5191eaec418fc2bd.js",
       "static/chunks/771-268b9aea8536e8f7.js",
       "static/chunks/470-a7ed6341bd412188.js",
-      "static/chunks/255-7991dd0ec437fb2e.js",
+      "static/chunks/255-8b4169003c1c34b9.js",
       "static/css/964e3b8f8760d7f0.css",
-      "static/chunks/app/layout-5fd0954a66671533.js"
+      "static/chunks/app/layout-711225b550da0311.js"
     ],
     "/annotation-success/page": [
       "static/chunks/webpack-4ca57f26c049f58b.js",
@@ -29,8 +29,8 @@
       "static/chunks/771-268b9aea8536e8f7.js",
       "static/chunks/470-a7ed6341bd412188.js",
       "static/chunks/758-7023ffe89f0639f5.js",
-      "static/chunks/255-7991dd0ec437fb2e.js",
-      "static/chunks/app/annotation-success/page-5251a6d03946f981.js"
+      "static/chunks/255-8b4169003c1c34b9.js",
+      "static/chunks/app/annotation-success/page-9a7d2fabee2a2e75.js"
     ],
     "/home/page": [
       "static/chunks/webpack-4ca57f26c049f58b.js",
@@ -49,9 +49,9 @@
       "static/chunks/771-268b9aea8536e8f7.js",
       "static/chunks/470-a7ed6341bd412188.js",
       "static/chunks/758-7023ffe89f0639f5.js",
-      "static/chunks/255-7991dd0ec437fb2e.js",
+      "static/chunks/255-8b4169003c1c34b9.js",
       "static/css/2459ee7a2e569bf5.css",
-      "static/chunks/app/predict-annotate/page-16fc7e7d34255fca.js"
+      "static/chunks/app/predict-annotate/page-45f8ef74474cc9b1.js"
     ],
     "/submit-news/page": [
       "static/chunks/webpack-4ca57f26c049f58b.js",
@@ -61,7 +61,7 @@
       "static/chunks/771-268b9aea8536e8f7.js",
       "static/chunks/470-a7ed6341bd412188.js",
       "static/chunks/758-7023ffe89f0639f5.js",
-      "static/chunks/255-7991dd0ec437fb2e.js",
+      "static/chunks/255-8b4169003c1c34b9.js",
       "static/css/2459ee7a2e569bf5.css",
       "static/chunks/app/submit-news/page-556092c3ffcf5207.js"
     ]

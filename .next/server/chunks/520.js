@@ -270,10 +270,8 @@ var NetworkTypes = __webpack_require__(881);
 	 * Request Interceptor for adding Authorization: Bearer token by taking token from authSate in redux store.
 	 * @param {AxiosRequestConfig} config
 	 */ function requestAuthorizationInterceptor(config) {
-        console.log("\uD83D\uDE80 ~ file: HackFaceServerAxiosRequestInterceptors.ts:34 ~ store:", store);
         if (store) {
             // setting authorization header
-            console.log("\uD83D\uDE80 ~ file: HackFaceServerAxiosRequestInterceptors.ts:45 ~ store.getState().authReducer.tokens.accessToken:", store.getState().authReducer.tokens.accessToken);
             return {
                 ...config,
                 headers: {
@@ -497,7 +495,6 @@ function NewsService(apiServer) {
             result = buildResultOnFullFilled(value);
         }, // onRejected
         (reason)=>{
-            console.log("\uD83D\uDE80 ~ file: NewsService.ts:64 ~ NewsService ~ reason:", reason);
             result = buildResultOnRejected(reason);
         }).catch((error)=>{
             throw error;
@@ -593,7 +590,6 @@ var hackFakeServer = __webpack_require__(2305);
  *
  * @param store
  */ const injectStore = (store)=>{
-    console.log("\uD83D\uDE80 ~ file: index.ts:15 ~ injectStore ~ store:");
     (0,hackFakeServer/* injectStore */.ni)(store);
 };
 
@@ -795,7 +791,6 @@ const fetchAllAnnotationOptions = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3
             });
         }
     } catch (error) {
-        console.log("\uD83D\uDE80 ~ file: ThunkActions.ts:33 ~ > ~ error:", error);
         return rejectWithValue({
             message: "Something went wrong"
         });
@@ -936,7 +931,6 @@ const authenticate = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__/* .createA
             });
         }
     } catch (error) {
-        console.log("\uD83D\uDE80 ~ file: ThunkActions.ts:33 ~ > ~ error:", error);
         return rejectWithValue({
             message: "Something went wrong"
         });
@@ -1077,7 +1071,6 @@ const curriedThunkName = (0,_utils_ReduxUtil__WEBPACK_IMPORTED_MODULE_1__/* .cur
 const submitNews = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__/* .createAsyncThunk */ .hg)(curriedThunkName("submitNews"), async (payload, { rejectWithValue })=>{
     try {
         const response = await _services_api_hackFakeServer__WEBPACK_IMPORTED_MODULE_0__/* .newsService */ .Qw.submitNews(payload);
-        console.log("\uD83D\uDE80 ~ file: ThunkActions.ts:26 ~ > ~ response:", response);
         if (response) {
             const { httpStatusCode, data, error } = response;
             switch(httpStatusCode){
@@ -1110,7 +1103,6 @@ const submitNews = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__/* .createAsy
 const annotateNews = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__/* .createAsyncThunk */ .hg)(curriedThunkName("annotateNews"), async (payload, { rejectWithValue })=>{
     try {
         const response = await _services_api_hackFakeServer__WEBPACK_IMPORTED_MODULE_0__/* .newsService */ .Qw.annotateNews(payload.newsId, payload.annotations);
-        console.log("\uD83D\uDE80 ~ file: ThunkActions.ts:71 ~ > ~ response:", response);
         if (response) {
             const { httpStatusCode, data, error } = response;
             switch(httpStatusCode){

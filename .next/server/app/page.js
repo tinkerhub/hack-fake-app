@@ -480,7 +480,6 @@ function LoginPage() {
         return state.authReducer;
     });
     react_default().useEffect(()=>{
-        console.log("\uD83D\uDE80 ~ file: page.tsx:23 ~ LoginPage ~ authState:", authState);
         if (!authState.isLoading && authState.responseStatus === NetworkTypes/* apiResponseStatuses */.m.SUCCESS && authState.isAuthenticated) {
             router.push("/home");
         }
@@ -496,10 +495,6 @@ function LoginPage() {
     };
     const onPressLogin = async ()=>{
         if (email && email.length > 4 && password && password.length > 2) {
-            console.log("Clicked login :>> ", {
-                email,
-                password
-            });
             await dispatch((0,ThunkActions/* authenticate */.Y)({
                 email,
                 password
