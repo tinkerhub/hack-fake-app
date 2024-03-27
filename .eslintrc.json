@@ -45,7 +45,9 @@
 		"*.svg",
 		"**/build/*",
 		"commitlint.config.js",
-		"ecosystem-staging.config.js"
+		"ecosystem-development.config.js",
+		"ecosystem-staging.config.js",
+		"ecosystem-production.config.js"
 	],
 	"rules": {
 		"react/no-unknown-property": ["error", {"ignore": ["css"]}],

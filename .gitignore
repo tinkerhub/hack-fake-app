@@ -27,6 +27,12 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# production env files
+.env.production
+
+# production deployment script
+deploy-local-to-production.sh
+
 # vercel
 .vercel
 
